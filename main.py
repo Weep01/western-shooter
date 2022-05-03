@@ -1,5 +1,6 @@
 import pygame
-from game import Game
+from game import *
+import math
 pygame.init()
 
 #generer fenetre jeu
@@ -9,8 +10,20 @@ screen = pygame.display.set_mode((1080, 650))
 #arriere plan
 background = pygame.image.load('assets/f.png')
 
+#importer banniere
+banner = pygame.image.load('assets/banniere.png')
+banner = pygame.transform.scale(banner, (400,400))
+banner_rect = banner.get_rect()
+banner_rect.x = math.ceil(screen.get_width()/4)
 
-#charger le jeu
+#importer bouton de jeu
+play_button = pygame.image.load('assets/play now.png')
+play_button = pygame.transform.scale(play_button, (200,200))
+play_button_rect = play_button.get_rect()
+play_button_rect.x = math.ceil(screen.get_width()/3)
+play_button_rect.y = math.ceil(screen.get_height()/2)
+
+#lancer jeu
 game = Game()
 
 
@@ -20,34 +33,17 @@ running = True
 while running:
 
     # arriere plan jeu
-    screen.blit(background, (0,-30))
+    screen.blit(background, (0, -30))
 
-    # recup projec joueurs
-    for projectile in game.player.all_projectiles:
-        projectile.move()
-
-    #appliquer image joueur
-    screen.blit(game.player.image, game.player.rect)
-    screen.blit(game.player2.image, game.player2.rect)
-
-    #limite ecran
-    if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x < 1020 :
-        game.player.move_right()
-    if game.pressed.get(pygame.K_LEFT) and game.player.rect.x > -5:
-        game.player.move_left()
-    if game.pressed.get(pygame.K_RIGHT) and game.player2.rect.x < 1020 :
-        game.player2.move_right()
-    if game.pressed.get(pygame.K_LEFT) and game.player2.rect.x > -5:
-        game.player2.move_left()
-
-    # appliquer image projectile
-    game.player.all_projectiles.draw(screen)
-
-    print(game.player.rect.x)
-
-    game.player2.all_projectiles.draw(screen)
-
-    print(game.player2.rect.x)
+    #verifier si jeu à commencé
+    if game.is_playing:
+        #declanché instruction partie
+        game.update(screen)
+    #verif si jeu n'a pas commencé
+    else:
+        #ajouter mon ecran de bvn
+        screen.blit(banner, (banner_rect))
+        screen.blit(play_button, (play_button_rect))
 
 
 
@@ -66,8 +62,12 @@ while running:
             #Pression touche
             game.pressed[event.key] = True
             #detecter si espace utilisé
-            if event.key == pygame.K_RSHIFT:
+            if event.key == pygame.K_m:
                 game.player.launch_projectile()
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False
-
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            #si clic souris en collision avec jouer
+            if play_button_rect.collidepoint(event.pos):
+                #mettre le jeu en mode lancé
+                game.is_playing = True
