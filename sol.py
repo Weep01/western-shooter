@@ -14,3 +14,4 @@ class Sol(pygame.sprite.Sprite):
 
         # dessiner barre de vie
         pygame.draw.rect(surface, couleur_sol, sol_position)
+        
