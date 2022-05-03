@@ -42,4 +42,3 @@ class Player(pygame.sprite.Sprite) :
 
         # dessiner barre de vie
         pygame.draw.rect(surface, bar_color, bar_position)
-
