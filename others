@@ -1,0 +1,8 @@
+            if event.key == pygame.K_RIGHT:
+                game.player.move_right()
+            elif event.key == pygame.K_LEFT:
+                game.player.move_left()
+
+
+                            "touche_fleche_droite": True,
+            "touche_fleche_gauche": False

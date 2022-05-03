@@ -7,6 +7,7 @@ class Player(pygame.sprite.Sprite) :
 
     def __init__(self, game):
         super().__init__()
+        self.game = game
         self.health = 100
         self.max_health = 100
         self.attack = 10
@@ -24,15 +25,21 @@ class Player(pygame.sprite.Sprite) :
         self.all_projectiles.add(Projectile(self))
 
 
-
     def move_right(self):
-        #si joueur pas collision avec joueur2
-        if not self.game.check_collision(self, self.game.player2):
+        # si joueur pas collision avec monstre
+        if not self.game.check_collision(self, self.game.all_monster):
             self.rect.x += self.velocity
 
     def move_left(self):
-        if not self.game.check_collision(self, self.game.player2):
-            self.rect.x -= self.velocity
+        self.rect.x -= self.velocity
 
+    def update_health_bar(self, surface):
+        # definir couleur barre ( htmlcolorcodes.com)
+        bar_color = (250, 68, 29)
 
+        # def position et aspect de la barre
+        bar_position = [self.rect.x, self.rect.y - 10, self.health, 5]
+
+        # dessiner barre de vie
+        pygame.draw.rect(surface, bar_color, bar_position)
 

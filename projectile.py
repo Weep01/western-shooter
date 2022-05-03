@@ -19,10 +19,12 @@ class Projectile(pygame.sprite.Sprite):
 
     def move(self):
         self.rect.x += self.velocity
-        #verif si projectile touche player2
-        if self.player.game.check_collision(self, self.player.game.player2):
+        #verif si projectile touche monstre
+        for monster in self.player.game.check_collision(self, self.player.game.all_monster):
             #sup projectile
             self.remove()
+            #infliger degats
+            monster.damage(self.player.attack)
 
         #si projec hors ecran
         if self.rect.x > 1080:
