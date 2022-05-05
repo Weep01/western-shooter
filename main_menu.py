@@ -1,7 +1,8 @@
-from functions import *
-from game_menu import game_menu
+import pygame
+from pygame.locals import *
 
-def main_menu(screen):
+def main_menu_func(screen):
+    # Initialisation des boutons du menu principal sous forme de classes
     class button:
         class play_button:
             def __init__(self):
@@ -34,43 +35,36 @@ def main_menu(screen):
 
     font = pygame.font.SysFont(None, 100)
 
+    from functions import draw_text, mouse_get
+    from game_menu import game_menu_func
+
     while True:
         screen.blit(menu_background, (0, 0))
         draw_text('Projet Transverse', font, (255, 255, 255), screen, 350, 100)
 
         mouse_x, mouse_y = mouse_get()
 
-        # HOVER ANIMATION
+        # Animation en pointant les boutons + action au clic
         for i in button_list:
             temp = i()
             if temp.unpressed.get_rect().collidepoint(mouse_x - temp.x, mouse_y - temp.y):
-                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    if (i == button.stop_button):
-                        pygame.quit()
-                        exit()
-                    if (i == button.play_button):
-                        game_menu(screen)
-                        return
+                for event in pygame.event.get():
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                        if (i == button.stop_button):
+                            pygame.quit()
+                            exit()
+                        if (i == button.play_button):
+                            game_menu_func(screen)
                 screen.blit(temp.pressed, (temp.x, temp.y))
             else:
                 screen.blit(temp.unpressed, (temp.x, temp.y))
     
-        # EVENT
+        # Action en cas de fermeture du programme (afin d'éviter les erreurs)
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
+                exit()
         
+        # Actualisation de l'affichage
         pygame.display.update()
         clock.tick(60)
-
-
-
-
-# MOUSE
-#if button.x < mouse_pos[0] < button.x+button.width and button.y < mouse_pos[1] < button.y+button.height:
-#    screen.blit(button.play_pressed, (button.x,button.y))
-#else:
-#    screen.blit(button.play_unpressed, (button.x,button.y))
-# PLAY BUTTON DRAW
-#pygame.draw.rect(screen, button.bgcolor, pygame.Rect(button.x, button.y, button.width, button.height))
-#pygame.draw.rect(screen, button.color, pygame.Rect(button.x+button.gap, button.y+button.gap, button.width-button.gap*2, button.height-button.gap*2))
