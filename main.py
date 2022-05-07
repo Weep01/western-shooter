@@ -62,7 +62,7 @@ while running:
             #Pression touche
             game.pressed[event.key] = True
             #detecter si espace utilisé
-            if event.key == pygame.K_m:
+            if event.key == pygame.K_SPACE:
                 game.player.launch_projectile()
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False

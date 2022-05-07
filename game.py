@@ -54,7 +54,7 @@ class Game:
 
         for player in self.all_players:
             player.update_health_bar(screen)
-        print(self.player.rect.x)
+        #print(self.player.rect.x) 
 
 
 
