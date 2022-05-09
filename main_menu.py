@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from game import Game
 
 def main_menu_func(screen):
     # Initialisation des boutons du menu principal sous forme de classes
@@ -36,7 +37,6 @@ def main_menu_func(screen):
     font = pygame.font.SysFont(None, 100)
 
     from functions import draw_text, mouse_get
-    from game_menu import game_menu_func
 
     while True:
         screen.blit(menu_background, (0, 0))
@@ -54,7 +54,9 @@ def main_menu_func(screen):
                             pygame.quit()
                             exit()
                         if (i == button.play_button):
-                            game_menu_func(screen)
+                            game = Game()
+                            game.start(screen)
+                            return
                 screen.blit(temp.pressed, (temp.x, temp.y))
             else:
                 screen.blit(temp.unpressed, (temp.x, temp.y))
