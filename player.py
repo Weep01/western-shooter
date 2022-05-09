@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from projectile import Projectile
+import time 
 
 class Player(pygame.sprite.Sprite):
 
@@ -27,12 +28,9 @@ class Player(pygame.sprite.Sprite):
         self.jump_force = 25
         self.gravity = 2
 
+        self.projectile_cooldown = False # est ce que l'arme est en cooldown
         self.fire = False
         self.all_projectiles = pygame.sprite.Group()
-    
-    def launch_projectile(self):
-        #creer instance projectile
-        self.all_projectiles.add(Projectile(self))
 
     # Fonction d'affichage du sprite en prenant en compte le sens (flip)
     def draw(self, screen):
@@ -61,9 +59,11 @@ class Player(pygame.sprite.Sprite):
 
         #TIRE PROJECTILE non fonctionnelle
         if self.fire :
+            self.fire = False
             print("on fire")
             self.all_projectiles.add(Projectile(self))
-            self.fire = False
+
+
 
         # CHECK COLLISION BORDURE
         # BORDURE GAUCHE

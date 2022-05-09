@@ -47,7 +47,11 @@ class Game:
             self.player_1.jump = False
         #if self.pressed.get(pygame.K_DOWN):
         #    self.player_1.launch_projectile()
-        
+        if self.pressed.get(pygame.K_SPACE):
+            self.player_1.fire = True
+        else:
+            self.player_1.fire = False
+
         if self.pressed.get(pygame.K_d):
             self.player_2.right_move = True
         else:
@@ -70,7 +74,10 @@ class Game:
             player.draw(screen)
             # Actualisation de la barre de vie des joueurs
             player.update_health_bar(screen)
-
+            
+            player.all_projectiles.draw(screen)
+            for projectile in player.all_projectiles:
+                projectile.move()
         clock.tick(60)
         pygame.display.update()
     

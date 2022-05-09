@@ -17,6 +17,8 @@ class Projectile(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = player.rect.x + 80
         self.rect.y = player.rect.y + 5
+        self.constx = self.rect.x
+        self.consty = self.rect.y
         #timer
         self.staticpoint = pygame.time.get_ticks() #temps en ms ou le missile à été lancé
 
@@ -26,25 +28,21 @@ class Projectile(pygame.sprite.Sprite):
     def move(self):
         from main import screen
         self.t = (pygame.time.get_ticks()-self.staticpoint) /100 # temps t apres missile soit lancé en seconde
-        print(self.t)
-        self.rect.x = cos(self.alpha)*self.v0*self.t +self.player.rect.x
-        self.rect.y = -(-(1/2)*9.81*(self.t**2)  +  sin(self.alpha)*self.v0*self.t )+self.player.rect.y 
-        print("y = ",-(self.rect.y-404),"x = ",self.rect.x)
+        #print(self.t)
+        self.rect.x = cos(self.alpha)*self.v0*self.t +self.constx
+        self.rect.y = -(-(1/2)*9.81*(self.t**2)  +  sin(self.alpha)*self.v0*self.t )+self.consty
+        #print("y = ",-(self.rect.y-404),"x = ",self.rect.x)
         #verif si projectile touche monstre
-        
+
+
     
 
         #si projec hors ecran
-        if  0> self.rect.x or self.rect.x  > 1080 or self.rect.y>2000:
+        if  0> self.rect.x or self.rect.x  > 1280 or self.rect.y>2000:
             #sup projec
             self.remove()
-            """
-        for monster in self.player.game.check_collision(self, self.player.game.all_monster):
-            #sup projectile
-            self.remove()
-            #infliger degats
-            monster.damage(self.player.attack)
-"""
+          
+
 
     def draw(self):
         from main import screen
