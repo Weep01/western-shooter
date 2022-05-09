@@ -27,6 +27,8 @@ class Player(pygame.sprite.Sprite):
         self.jump = False
         self.jump_force = 25
         self.gravity = 2
+        self.power = 100
+        self.max_power = 100
 
         self.projectile_cooldown = False # est ce que l'arme est en cooldown
         self.fire = False
@@ -97,3 +99,9 @@ class Player(pygame.sprite.Sprite):
 
         # dessiner barre de vie
         pygame.draw.rect(screen, bar_color, bar_position)
+    def update_power_bar(self,screen):
+        #dessine bar de puissance
+
+        bar_color2=(0,51,255)
+        bar_position2 = [self.rect.x - 10 , self.rect.y -30, self.power, 5]
+        pygame.draw.rect(screen,bar_color2,bar_position2)

@@ -8,7 +8,7 @@ class Projectile(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
         self.velocity = 5
-        self.v0 = 100 #la valeur devra changer plus tard
+        self.v0 = player.power #la valeur devra changer plus tard
         self.alpha = radians(45)
         self.player = player
         self.image = pygame.image.load('Images/assets/bullet.png').convert()
@@ -35,7 +35,7 @@ class Projectile(pygame.sprite.Sprite):
         #verif si projectile touche monstre
 
 
-    
+       #IL MANQUE UNE PARTIE DU CODE PRESENT DANS L ANCIENNE VERSION DE LOUIS
 
         #si projec hors ecran
         if  0> self.rect.x or self.rect.x  > 1280 or self.rect.y>2000:

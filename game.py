@@ -74,7 +74,13 @@ class Game:
             player.draw(screen)
             # Actualisation de la barre de vie des joueurs
             player.update_health_bar(screen)
-            
+            # Actualisation de la force des joueurs
+            if player.power == player.max_power:
+                player.power = 0
+            else:
+                player.power += 1 
+            player.update_power_bar(screen)
+
             player.all_projectiles.draw(screen)
             for projectile in player.all_projectiles:
                 projectile.move()
