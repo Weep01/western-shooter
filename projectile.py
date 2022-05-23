@@ -16,9 +16,12 @@ class Projectile(pygame.sprite.Sprite):
             self.flip = 1
             
         self.player = player
-        self.image = pygame.image.load('Images/assets/bullet.png').convert()
+        if player.id == 1 :
+            self.image = pygame.image.load('Images/assets/blue_bullet.png')
+        else:
+            self.image = pygame.image.load('Images/assets/red_bullet.png')
         #modif taille
-        self.image = pygame.transform.scale(self.image, (30,30))
+        self.image = pygame.transform.scale(self.image, (25,15))
         self.rect = self.image.get_rect()
         self.rect.x = player.rect.x
         self.rect.y = player.rect.y + 5
@@ -34,7 +37,6 @@ class Projectile(pygame.sprite.Sprite):
         from main import screen
         self.t = (pygame.time.get_ticks()-self.staticpoint) /100 # temps t apres missile soit lancé en seconde
         #print(self.t)
-        print(self.num,self.v0)
         self.rect.x = self.flip*cos(self.alpha)*self.v0*self.t +self.constx
         self.rect.y = -(-(1/2)*9.81*(self.t**2)  +  sin(self.alpha)*self.v0*self.t )+self.consty
         #print("y = ",-(self.rect.y-404),"x = ",self.rect.x)
@@ -44,13 +46,13 @@ class Projectile(pygame.sprite.Sprite):
        #IL MANQUE UNE PARTIE DU CODE PRESENT DANS L ANCIENNE VERSION DE LOUIS
 
         #si projec hors ecran
-        if  0> self.rect.x or self.rect.x  > 1280 or self.rect.y>2000:
+        if  0> self.rect.x or self.rect.x  > 1280 or self.rect.y>550:
             #sup projec
-            self.remove()
+            self.kill()
           
 
 
     def draw(self):
         from main import screen
         screen.blit(screen,(self.rect.x,self.rect.y))
-        coliddirect
+

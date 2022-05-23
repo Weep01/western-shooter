@@ -117,6 +117,12 @@ class Game:
                 if projectile.rect.colliderect(self.player_1.rect):
                     self.player_1.attack()
                     projectile.kill()
+            if self.player_1.health <= 0:
+                print("joueur 1 mort")
+                self.player_1.kill()
+            if self.player_2.health <= 0:
+                self.player_2.kill()
+                print("joueur 2 mort")
         clock.tick(60)
         pygame.display.update()
     

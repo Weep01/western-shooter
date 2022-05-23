@@ -14,10 +14,10 @@ class Player(pygame.sprite.Sprite):
         self.right_move = False
         self.id = player_id
         if player_id == 1:
-            self.image = pygame.image.load('Images/assets/red_char.png')
+            self.image = pygame.image.load('Images/assets/blue_char.png')
             self.flip = True
         else: 
-            self.image = pygame.image.load('Images/assets/blue_char.png')
+            self.image = pygame.image.load('Images/assets/red_char.png')
             self.flip = False
         self.rect = self.image.get_rect()
         self.rect.center = (x, y+280)
@@ -91,8 +91,9 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += mouv_x
         self.rect.y += mouv_y
 
+        
 
-        print(self.rect.center)
+
     def update_health_bar(self, screen):
         # definir couleur barre ( htmlcolorcodes.com)
         bar_color = (250, 68, 29)
@@ -113,3 +114,4 @@ class Player(pygame.sprite.Sprite):
     
     def attack(self):
         self.health -= 20
+    
