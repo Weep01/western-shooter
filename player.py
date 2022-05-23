@@ -91,6 +91,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += mouv_x
         self.rect.y += mouv_y
 
+
         print(self.rect.center)
     def update_health_bar(self, screen):
         # definir couleur barre ( htmlcolorcodes.com)
@@ -109,3 +110,6 @@ class Player(pygame.sprite.Sprite):
         bar_color2=(0,51,255)
         bar_position2 = [self.rect.x - 10 , self.rect.y -30, self.power, 5]
         pygame.draw.rect(screen,bar_color2,bar_position2)
+    
+    def attack(self):
+        self.health -= 20

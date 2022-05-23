@@ -53,3 +53,4 @@ class Projectile(pygame.sprite.Sprite):
     def draw(self):
         from main import screen
         screen.blit(screen,(self.rect.x,self.rect.y))
+        coliddirect
