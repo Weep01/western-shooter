@@ -10,6 +10,7 @@ class Game:
         self.players.add(self.player_1)
         self.players.add(self.player_2)
         self.pressed = {}
+        self.background = pygame.image.load('Images/assets/game_background.png')
     
     def get_input(self):
         for event in pygame.event.get():
@@ -27,11 +28,9 @@ class Game:
                 self.pressed[event.key] = False
     
     def update(self, screen, clock):
-        screen.fill((0,0,0))
+        screen.blit(self.background, (0, 0))
 
         self.get_input()
-
-        # Dégueulasse mais j'ai pas pu faire autrement
 
         if self.pressed.get(pygame.K_RIGHT):
             self.player_1.right_move = True
