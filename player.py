@@ -15,11 +15,9 @@ class Player(pygame.sprite.Sprite):
         self.right_move = False
         self.id = player_id
         if player_id == 1:
-            self.image = pygame.image.load('Images/Assets/char_1.png')
-            self.image2 = pygame.image.load('Images/0x72_16x16DungeonTileset.v4.png')
-
+            self.image = pygame.image.load('Images/assets/red_char.png')
         else: 
-            self.image = pygame.image.load('Images/Assets/char_1.png')
+            self.image = pygame.image.load('Images/assets/blue_char.png')
         self.rect = self.image.get_rect()
         self.rect.center = (x, y+280)
         self.speed = 6
@@ -47,12 +45,12 @@ class Player(pygame.sprite.Sprite):
         # MOUVEMENT GAUCHE
         if self.left_move:
             mouv_x = -self.speed
-            self.flip = True
+            self.flip = False
             self.direction = -1
         # MOUVEMENT DROITE
         if self.right_move:
             mouv_x = self.speed
-            self.flip = False
+            self.flip = True
             self.direction = 1
         
         # MOUVEMENT SAUT
@@ -71,12 +69,12 @@ class Player(pygame.sprite.Sprite):
 
         # CHECK COLLISION BORDURE
         # BORDURE GAUCHE
-        if self.rect.center[0] - (self.width/2) < 0:
-            if self.flip:
+        if self.rect.center[0] - (self.width/2) < 40:
+            if not self.flip:
                 self.rect.x -= mouv_x
         # BORDURE DROITE
-        if self.rect.center[0] + (self.width/2) > 1280:
-            if not self.flip:
+        if self.rect.center[0] + (self.width/2) > 1240:
+            if self.flip:
                 self.rect.x -= mouv_x
         
         # APPLICATION GRAVITE
