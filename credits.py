@@ -58,13 +58,13 @@ def credits_menu(screen):
         credits_names()    
 
         #Retourner au menu
-        def return_to_menu():
-            if button.image.get_rect().collidepoint(mouse_x - button.x, mouse_y - button.y):
-                for event in pygame.event.get():
-                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                        return
-            return
-        return_to_menu()
+        
+        if button.image.get_rect().collidepoint(mouse_x - button.x, mouse_y - button.y):
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    return
+            
+        
 
         # Quitter le jeu 
         
