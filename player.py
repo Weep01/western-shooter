@@ -110,3 +110,4 @@ class Player(pygame.sprite.Sprite):
     
     def attack(self):
         self.health -= 20
+    
