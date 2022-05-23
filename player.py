@@ -10,23 +10,24 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.max_health = 100
         self.health = 100
-        self.flip = False
         self.left_move = False
         self.right_move = False
         self.id = player_id
         if player_id == 1:
             self.image = pygame.image.load('Images/assets/red_char.png')
+            self.flip = True
         else: 
             self.image = pygame.image.load('Images/assets/blue_char.png')
+            self.flip = False
         self.rect = self.image.get_rect()
         self.rect.center = (x, y+280)
-        self.speed = 6
+        self.speed = 7
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self.on_ground = True
         self.jump = False
-        self.jump_force = 25
-        self.gravity = 2
+        self.jump_force = 30
+        self.gravity = 1.5
         self.power = 100
         self.max_power = 100
 
@@ -90,6 +91,8 @@ class Player(pygame.sprite.Sprite):
         # APPLICATION DU MOUVEMENT SUR LE JOUEUR
         self.rect.x += mouv_x
         self.rect.y += mouv_y
+
+        print(self.rect.center)
     def update_health_bar(self, screen):
         # definir couleur barre ( htmlcolorcodes.com)
         bar_color = (250, 68, 29)
