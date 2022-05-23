@@ -62,7 +62,6 @@ def main_menu_func(screen):
                             return
                         if (i == button.credits_button):
                             credits_menu(screen)
-                            return
             screen.blit(temp.image, (temp.x, temp.y))
         #        screen.blit(temp.pressed, (temp.x, temp.y))
         #    else:

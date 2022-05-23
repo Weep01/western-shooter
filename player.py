@@ -63,7 +63,6 @@ class Player(pygame.sprite.Sprite):
         #TIRE PROJECTILE non fonctionnelle
         if self.fire :
             #self.fire = False
-            print("on fire")
             self.all_projectiles.add(Projectile(self))
 
 

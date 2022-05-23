@@ -1,8 +1,6 @@
 import pygame
 from math import *
 
-from regex import V0
-
 #definir class projectile
 class Projectile(pygame.sprite.Sprite):
     #def constructeur classe
