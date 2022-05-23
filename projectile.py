@@ -1,4 +1,3 @@
-from turtle import screensize
 import pygame
 from math import *
 

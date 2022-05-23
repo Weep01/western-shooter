@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from game import Game
+from credits import credits_menu
 
 def main_menu_func(screen):
     # Initialisation des boutons du menu principal sous forme de classes
@@ -56,6 +57,9 @@ def main_menu_func(screen):
                         if (i == button.play_button):
                             game = Game()
                             game.start(screen)
+                            return
+                        if (i == button.credits_button):
+                            credits_menu(screen)
                             return
                 screen.blit(temp.pressed, (temp.x, temp.y))
             else:
