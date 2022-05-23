@@ -15,9 +15,17 @@ class Player(pygame.sprite.Sprite):
         self.id = player_id
         if player_id == 1:
             self.image = pygame.image.load('Images/assets/red_char.png')
+            self.logo = pygame.image.load('Images/assets/red_logo.png')
+            self.logo_pos = (30, 22)
+            self.health_bar = (pygame.image.load('Images/assets/red_three_heart.png'), pygame.image.load('Images/assets/red_two_heart.png'), pygame.image.load('Images/assets/red_one_heart.png'), pygame.image.load('Images/assets/empty_heart.png'))
+            self.health_bar_pos = (130, 30)
             self.flip = True
         else: 
             self.image = pygame.image.load('Images/assets/blue_char.png')
+            self.logo = pygame.image.load('Images/assets/blue_logo.png')
+            self.logo_pos = (1180, 22)
+            self.health_bar = (pygame.image.load('Images/assets/blue_three_heart.png'), pygame.image.load('Images/assets/blue_two_heart.png'), pygame.image.load('Images/assets/blue_one_heart.png'), pygame.image.load('Images/assets/empty_heart.png'))
+            self.health_bar_pos = (930, 30)
             self.flip = False
         self.rect = self.image.get_rect()
         self.rect.center = (x, y+280)
@@ -90,18 +98,7 @@ class Player(pygame.sprite.Sprite):
         # APPLICATION DU MOUVEMENT SUR LE JOUEUR
         self.rect.x += mouv_x
         self.rect.y += mouv_y
-
-
-        print(self.rect.center)
-    def update_health_bar(self, screen):
-        # definir couleur barre ( htmlcolorcodes.com)
-        bar_color = (250, 68, 29)
-
-        # def position et aspect de la barre
-        bar_position = [self.rect.x - 10, self.rect.y - 10, self.health, 5]
-
-        # dessiner barre de vie
-        pygame.draw.rect(screen, bar_color, bar_position)
+        
     def update_power_bar(self,screen):
 
 

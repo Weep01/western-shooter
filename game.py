@@ -81,13 +81,11 @@ class Game:
         #if self.pressed.get(pygame.K_s):
         #    self.player_2.launch_projectile()
 
-        for player in self.players:    
+        for player in self.players:
             # Actualisation de la position des joueurs
             player.move()
             # Affichage des joueurs
             player.draw(screen)
-            # Actualisation de la barre de vie des joueurs
-            player.update_health_bar(screen)
             # Actualisation de la force de joueur 1
 
             if self.pressed.get(pygame.K_SPACE):
@@ -98,7 +96,7 @@ class Game:
                 self.player_1.power = 0
             # JOUEUR 2
             if self.pressed.get(pygame.K_KP0):
-                if  self.player_2.power < self.player_2.max_power:
+                if self.player_2.power < self.player_2.max_power:
                     self.player_2.power += 1
             self.player_2.update_power_bar(screen)
             if self.pressed.get(pygame.K_KP0)!= True:
@@ -117,6 +115,21 @@ class Game:
                 if projectile.rect.colliderect(self.player_1.rect):
                     self.player_1.attack()
                     projectile.kill()
+            
+            # Actualisation de la barre de vie
+            if player.health >= 66:
+                screen.blit(player.health_bar[0], player.health_bar_pos)
+            elif player.health >= 33:
+                screen.blit(player.health_bar[1], player.health_bar_pos)
+            elif player.health > 0:
+                screen.blit(player.health_bar[2], player.health_bar_pos)
+            elif player.health == 0:
+                screen.blit(player.health_bar[3], player.health_bar_pos)
+            
+            # Affichage du logo du joueur
+            screen.blit(player.logo, player.logo_pos)
+    
+
         clock.tick(60)
         pygame.display.update()
     
