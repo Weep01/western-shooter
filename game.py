@@ -11,6 +11,8 @@ class Game:
         self.players.add(self.player_2)
         self.pressed = {}
         self.background = pygame.image.load('Images/assets/game_background.png')
+        self.press = False
+        self.press2 = False
     
     def get_input(self):
         for event in pygame.event.get():

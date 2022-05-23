@@ -11,9 +11,9 @@ class Projectile(pygame.sprite.Sprite):
         self.num = player.id
         self.alpha = radians(45)
         if player.flip == False:
-            self.flip = 1
-        else: 
             self.flip = -1
+        else: 
+            self.flip = 1
             
         self.player = player
         self.image = pygame.image.load('Images/assets/bullet.png').convert()
