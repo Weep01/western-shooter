@@ -11,9 +11,16 @@ class Game:
         self.players.add(self.player_2)
         self.pressed = {}
         self.background = pygame.image.load('Images/assets/game_background.png')
+        self.mort_background = pygame.image.load('Images/assets/Cadre_victoire.png')
+        self.mort_background = pygame.transform.scale(self.mort_background, (1000,500))
+
+        self.mort_blue = pygame.image.load('Images/assets/win_blue.png')
+        self.mort_blue = pygame.transform.scale(self.mort_blue, (600,300))
+        self.mort_red = pygame.image.load('Images/assets/win_red.png')
+        self.mort_red = pygame.transform.scale(self.mort_red, (600,300))
         self.press = False
         self.press2 = False
-    
+        
     def get_input(self):
         for event in pygame.event.get():
             #verifier fermeture fenetre
@@ -119,9 +126,14 @@ class Game:
                     projectile.kill()
             if self.player_1.health <= 0:
                 print("joueur 1 mort")
+                screen.blit(self.mort_background, (150, 100))
+                screen.blit(self.mort_red,(350, 200))
                 self.player_1.kill()
             if self.player_2.health <= 0:
                 self.player_2.kill()
+                screen.blit(self.mort_background, (150, 100))
+                screen.blit(self.mort_blue,(350, 200))
+                #screen.blit(self.background, (0, 0))
                 print("joueur 2 mort")
         clock.tick(60)
         pygame.display.update()
