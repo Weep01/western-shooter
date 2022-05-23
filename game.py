@@ -106,8 +106,11 @@ class Game:
 
 
             player.all_projectiles.draw(screen)
-            for projectile in player.all_projectiles:
+            for projectile in player.all_projectiles: # probleme
                 projectile.move()
+                if projectile.rect.colliderect(player.rect):
+                    player.attack()
+                    projectile.kill()
         clock.tick(60)
         pygame.display.update()
     
