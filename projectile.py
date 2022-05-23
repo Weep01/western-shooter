@@ -1,6 +1,8 @@
-from turtle import screensize
+
 import pygame
 from math import *
+
+from regex import V0
 
 #definir class projectile
 class Projectile(pygame.sprite.Sprite):
@@ -9,13 +11,19 @@ class Projectile(pygame.sprite.Sprite):
         super().__init__()
         self.velocity = 5
         self.v0 = player.power #la valeur devra changer plus tard
+        self.num = player.id
         self.alpha = radians(45)
+        if player.flip == False:
+            self.flip = 1
+        else: 
+            self.flip = -1
+            
         self.player = player
         self.image = pygame.image.load('Images/assets/bullet.png').convert()
         #modif taille
         self.image = pygame.transform.scale(self.image, (30,30))
         self.rect = self.image.get_rect()
-        self.rect.x = player.rect.x + 80
+        self.rect.x = player.rect.x
         self.rect.y = player.rect.y + 5
         self.constx = self.rect.x
         self.consty = self.rect.y
@@ -29,7 +37,8 @@ class Projectile(pygame.sprite.Sprite):
         from main import screen
         self.t = (pygame.time.get_ticks()-self.staticpoint) /100 # temps t apres missile soit lancé en seconde
         #print(self.t)
-        self.rect.x = cos(self.alpha)*self.v0*self.t +self.constx
+        print(self.num,self.v0)
+        self.rect.x = self.flip*cos(self.alpha)*self.v0*self.t +self.constx
         self.rect.y = -(-(1/2)*9.81*(self.t**2)  +  sin(self.alpha)*self.v0*self.t )+self.consty
         #print("y = ",-(self.rect.y-404),"x = ",self.rect.x)
         #verif si projectile touche monstre

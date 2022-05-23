@@ -13,9 +13,11 @@ class Player(pygame.sprite.Sprite):
         self.flip = False
         self.left_move = False
         self.right_move = False
+        self.id = player_id
         if player_id == 1:
             self.image = pygame.image.load('Images/Assets/char_1.png')
             self.image2 = pygame.image.load('Images/0x72_16x16DungeonTileset.v4.png')
+
         else: 
             self.image = pygame.image.load('Images/Assets/char_1.png')
         self.rect = self.image.get_rect()
@@ -61,7 +63,7 @@ class Player(pygame.sprite.Sprite):
 
         #TIRE PROJECTILE non fonctionnelle
         if self.fire :
-            self.fire = False
+            #self.fire = False
             print("on fire")
             self.all_projectiles.add(Projectile(self))
 
@@ -100,6 +102,8 @@ class Player(pygame.sprite.Sprite):
         # dessiner barre de vie
         pygame.draw.rect(screen, bar_color, bar_position)
     def update_power_bar(self,screen):
+
+
         #dessine bar de puissance
 
         bar_color2=(0,51,255)
