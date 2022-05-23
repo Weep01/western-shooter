@@ -31,6 +31,7 @@ def credits_menu(screen):
 
         def credits_names():
             text = pygame.font.SysFont(None, 100).render("Crédits", True, "White")
+            text_ = pygame.font.SysFont(None, 75).render("Développeurs", True, "White")
             text1 = pygame.font.SysFont(None, 50).render("Dizdarevic Tom", True, "White")
             text2 = pygame.font.SysFont(None, 50).render("Amiotte Thomas", True, "White")
             text3 = pygame.font.SysFont(None, 50).render("Vanlaeres Louis", True, "White")
@@ -39,13 +40,14 @@ def credits_menu(screen):
             text6 = pygame.font.SysFont(None, 50).render("Merle Clara", True, "White")
             text7 = pygame.font.SysFont(None, 50).render("Travouillon Eva", True, "White")
             position_text = text.get_rect(center=(640, 50))
-            position_text1 = text1.get_rect(center=(640, 150))
-            position_text2 = text2.get_rect(center=(640, 200))
-            position_text3 = text3.get_rect(center=(640, 250))
-            position_text4 = text4.get_rect(center=(640, 300))
+            position_text_ = text_.get_rect(center=(640, 125))
+            position_text1 = text1.get_rect(center=(640, 175))
+            position_text2 = text2.get_rect(center=(640, 225))
+            position_text3 = text3.get_rect(center=(640, 275))
+            position_text4 = text4.get_rect(center=(640, 325))
             position_text5 = text5.get_rect(center=(640, 400))
-            position_text6 = text6.get_rect(center=(640, 475))
-            position_text7 = text7.get_rect(center=(640, 525))
+            position_text6 = text6.get_rect(center=(640, 450))
+            position_text7 = text7.get_rect(center=(640, 500))
             a = screen.blit(text, position_text)
             b = screen.blit(text1, position_text1)
             c = screen.blit(text2, position_text2)
@@ -54,7 +56,8 @@ def credits_menu(screen):
             f = screen.blit(text5, position_text5)
             g = screen.blit(text6, position_text6)
             h = screen.blit(text7, position_text7)
-            return a,b,c,d,e,f,g,h
+            i = screen.blit(text_, position_text_)
+            return a,b,c,d,e,f,g,h,i
         credits_names()    
 
         #Retourner au menu
