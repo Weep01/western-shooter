@@ -46,11 +46,24 @@ class Game:
             self.player_1.jump = False
         #if self.pressed.get(pygame.K_DOWN):
         #    self.player_1.launch_projectile()
+        # PLAYER 1 TIRE
         if self.pressed.get(pygame.K_SPACE):
-            self.player_1.fire = True
+            self.press = True
         else:
             self.player_1.fire = False
+        if (self.press and self.pressed.get(pygame.K_SPACE)==False ):
+            self.player_1.fire = True
+            self.press = False
+        # PLAYER 2 TIRE
 
+        if self.pressed.get(pygame.K_KP0):
+            self.press2 = True
+        else:
+            self.player_2.fire = False
+        if (self.press2 and self.pressed.get(pygame.K_KP0)==False ):
+            self.player_2.fire = True
+            self.press2 = False
+        
         if self.pressed.get(pygame.K_d):
             self.player_2.right_move = True
         else:
@@ -73,12 +86,22 @@ class Game:
             player.draw(screen)
             # Actualisation de la barre de vie des joueurs
             player.update_health_bar(screen)
-            # Actualisation de la force des joueurs
-            if player.power == player.max_power:
-                player.power = 0
-            else:
-                player.power += 1 
-            player.update_power_bar(screen)
+            # Actualisation de la force de joueur 1
+
+            if self.pressed.get(pygame.K_SPACE):
+                if  self.player_1.power < self.player_1.max_power:
+                    self.player_1.power += 2 
+            self.player_1.update_power_bar(screen)
+            if self.pressed.get(pygame.K_SPACE)!= True:
+                self.player_1.power = 0
+            # JOUEUR 2
+            if self.pressed.get(pygame.K_KP0):
+                if  self.player_2.power < self.player_2.max_power:
+                    self.player_2.power += 2 
+            self.player_2.update_power_bar(screen)
+            if self.pressed.get(pygame.K_KP0)!= True:
+                self.player_2.power = 0            
+
 
             player.all_projectiles.draw(screen)
             for projectile in player.all_projectiles:
