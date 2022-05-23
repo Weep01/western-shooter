@@ -4,9 +4,7 @@ from main_menu import *
 from functions import *
 
 
-BLACK = (0,0,0)
 clock = pygame.time.Clock()
-
 
 class credits:
     def __init__(self):
