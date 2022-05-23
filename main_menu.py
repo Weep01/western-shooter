@@ -43,7 +43,7 @@ def main_menu_func(screen):
         screen.blit(menu_blur, (0, 0))
         screen.blit(menu_square, (335, 175))
 
-        draw_text('Projet Transverse', font, (255, 255, 255), screen, 350, 75)
+        draw_text('Lucky Luke', font, (255, 255, 255), screen, 450, 75)
 
         mouse_x, mouse_y = mouse_get()
 
