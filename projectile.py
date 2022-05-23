@@ -21,10 +21,12 @@ class Projectile(pygame.sprite.Sprite):
         else:
             self.image = pygame.image.load('Images/assets/blue_bullet.png')
         #modif taille
-        self.image = pygame.transform.scale(self.image, (25,15))
         self.rect = self.image.get_rect()
-        self.rect.x = player.rect.x
-        self.rect.y = player.rect.y + 5
+        if player.flip:
+            self.rect.x = player.rect.x + 140
+        else:
+            self.rect.x = player.rect.x - 15
+        self.rect.y = player.rect.y + 20
         self.constx = self.rect.x
         self.consty = self.rect.y
         #timer
@@ -34,9 +36,7 @@ class Projectile(pygame.sprite.Sprite):
         self.player.all_projectiles.remove(self)
 
     def move(self):
-        from main import screen
         self.t = (pygame.time.get_ticks()-self.staticpoint) /100 # temps t apres missile soit lancé en seconde
-        #print(self.t)
         self.rect.x = self.flip*cos(self.alpha)*self.v0*self.t +self.constx
         self.rect.y = -(-(1/2)*9.81*(self.t**2)  +  sin(self.alpha)*self.v0*self.t )+self.consty
         #print("y = ",-(self.rect.y-404),"x = ",self.rect.x)

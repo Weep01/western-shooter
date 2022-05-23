@@ -4,7 +4,7 @@ import pygame
 def init():
     screen = ""
     pygame.init()
-    pygame.display.set_caption('Projet Transverse')
+    pygame.display.set_caption('Western Shooter')
     screen = pygame.display.set_mode((1280, 720))
     return screen
 

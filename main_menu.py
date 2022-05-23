@@ -43,7 +43,7 @@ def main_menu_func(screen):
         screen.blit(menu_blur, (0, 0))
         screen.blit(menu_square, (335, 175))
 
-        draw_text('Lucky Luke', font, (255, 255, 255), screen, 450, 75)
+        draw_text('Western Shooter', font, (255, 255, 255), screen, 640, 90)
 
         mouse_x, mouse_y = mouse_get()
 
@@ -54,6 +54,7 @@ def main_menu_func(screen):
                 for event in pygame.event.get():
                     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                         if (i == button.stop_button):
+                            print("\nVous avez quitté le jeu.\nMerci d'avoir joué au Western Shooter !\n")
                             pygame.quit()
                             exit()
                         if (i == button.play_button):

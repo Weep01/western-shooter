@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 from projectile import Projectile
-import time 
 
 class Player(pygame.sprite.Sprite):
 
@@ -93,8 +92,8 @@ class Player(pygame.sprite.Sprite):
 
         # CONTACT AU SOL
         if self.rect.bottom + mouv_y > 550:
-                self.on_ground = True
-                self.vitesse_y = 0
+            self.on_ground = True
+            self.vitesse_y = 0
 
         # APPLICATION DU MOUVEMENT SUR LE JOUEUR
         self.rect.x += mouv_x
@@ -102,13 +101,15 @@ class Player(pygame.sprite.Sprite):
         
     def update_power_bar(self,screen):
 
-
         #dessine bar de puissance
 
-        bar_color2=(0,51,255)
-        bar_position2 = [self.rect.x - 10 , self.rect.y -30, self.power, 5]
-        pygame.draw.rect(screen,bar_color2,bar_position2)
+        if self.id == 1:
+            bar_color=(255,51,0)
+        else:
+            bar_color=(0,51,255)
+
+        bar_position = [self.rect.x + 17 , self.rect.y -30, self.power, 5]
+        pygame.draw.rect(screen,bar_color,bar_position)
     
     def attack(self):
         self.health -= 35
-    
