@@ -7,7 +7,7 @@ class Projectile(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
         self.velocity = 5
-        self.v0 = player.power #la valeur devra changer plus tard
+        self.v0 = player.power
         self.num = player.id
         self.alpha = radians(45)
         if player.flip == False:

@@ -12,10 +12,10 @@ def init():
 def draw_text(content, font, color, surface, x, y):
     text = font.render(content, 1, color)
     textsize = text.get_rect()
-    textsize.topleft = (x, y)
+    textsize.center = (x, y)
     surface.blit(text, textsize)
 
-# Fonction pour afficher la position de la souris (dev)
+# Fonction pour récupérer la position de la souris
 def mouse_get():
     x,y = pygame.mouse.get_pos()
     return x,y

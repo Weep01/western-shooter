@@ -63,18 +63,12 @@ def main_menu_func(screen):
                         if (i == button.credits_button):
                             credits_menu(screen)
             screen.blit(temp.image, (temp.x, temp.y))
-        #        screen.blit(temp.pressed, (temp.x, temp.y))
-        #    else:
-        #        screen.blit(temp.unpressed, (temp.x, temp.y))
-    
+
         # Action en cas de fermeture du programme (afin d'éviter les erreurs)
-    
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 exit()
-            
-        
         
         # Actualisation de l'affichage
         pygame.display.update()
