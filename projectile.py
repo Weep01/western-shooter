@@ -1,8 +1,6 @@
 import pygame
 from math import *
 
-
-
 #definir class projectile
 class Projectile(pygame.sprite.Sprite):
     #def constructeur classe
