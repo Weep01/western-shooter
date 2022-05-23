@@ -17,9 +17,9 @@ class Projectile(pygame.sprite.Sprite):
             
         self.player = player
         if player.id == 1 :
-            self.image = pygame.image.load('Images/assets/blue_bullet.png')
-        else:
             self.image = pygame.image.load('Images/assets/red_bullet.png')
+        else:
+            self.image = pygame.image.load('Images/assets/blue_bullet.png')
         #modif taille
         self.image = pygame.transform.scale(self.image, (25,15))
         self.rect = self.image.get_rect()

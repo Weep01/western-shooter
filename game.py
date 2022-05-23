@@ -97,26 +97,29 @@ class Game:
             if self.pressed.get(pygame.K_SPACE):
                 if self.player_1.power < self.player_1.max_power:
                     self.player_1.power += 1
+                    print(self.player_1.power)
             self.player_1.update_power_bar(screen)
-            if self.pressed.get(pygame.K_SPACE)!= True:
-                self.player_1.power = 0
+
+
             # JOUEUR 2
             if self.pressed.get(pygame.K_KP0):
                 if self.player_2.power < self.player_2.max_power:
                     self.player_2.power += 1
+                    print(self.player_2.power)
             self.player_2.update_power_bar(screen)
-            if self.pressed.get(pygame.K_KP0)!= True:
-                self.player_2.power = 0            
+         
+
+
 
 
             player.all_projectiles.draw(screen)
-            for projectile in self.player_1.all_projectiles: # probleme
+            for projectile in self.player_1.all_projectiles: 
                 projectile.move()
                 if projectile.rect.colliderect(self.player_2.rect):
                     self.player_2.attack()
                     projectile.kill()
 
-            for projectile in self.player_2.all_projectiles: # probleme
+            for projectile in self.player_2.all_projectiles: 
                 projectile.move()
                 if projectile.rect.colliderect(self.player_1.rect):
                     self.player_1.attack()
@@ -138,12 +141,12 @@ class Game:
             if self.player_1.health <= 0:
                 print("joueur 1 mort")
                 screen.blit(self.mort_background, (150, 100))
-                screen.blit(self.mort_red,(350, 200))
+                screen.blit(self.mort_blue,(350, 200))
                 self.player_1.kill()
             if self.player_2.health <= 0:
                 self.player_2.kill()
                 screen.blit(self.mort_background, (150, 100))
-                screen.blit(self.mort_blue,(350, 200))
+                screen.blit(self.mort_red,(350, 200))
                 #screen.blit(self.background, (0, 0))
                 print("joueur 2 mort")
         
