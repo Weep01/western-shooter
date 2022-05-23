@@ -67,13 +67,13 @@ def credits_menu(screen):
         return_to_menu()
 
         # Quitter le jeu 
-        def quitter_jeu():
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    pygame.quit()
-                    exit()
-            return
-        quitter_jeu()
+        
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
+            
+        
         pygame.display.update()
         clock.tick(60)
         
