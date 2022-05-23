@@ -5,8 +5,8 @@ class Game:
     def __init__(self):
         self.is_playing = False
         self.players = pygame.sprite.Group()
-        self.player_1 = Player(200, 200, 1)
-        self.player_2 = Player(800, 200, 2)
+        self.player_1 = Player(240, 200, 1)
+        self.player_2 = Player(1064, 200, 2)
         self.players.add(self.player_1)
         self.players.add(self.player_2)
         self.pressed = {}
