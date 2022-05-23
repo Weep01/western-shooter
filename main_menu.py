@@ -68,13 +68,13 @@ def main_menu_func(screen):
         #        screen.blit(temp.unpressed, (temp.x, temp.y))
     
         # Action en cas de fermeture du programme (afin d'éviter les erreurs)
-        def quitter_jeu():
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    pygame.quit()
-                    exit()
-            return
-        quitter_jeu()
+    
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
+            
+        
         
         # Actualisation de l'affichage
         pygame.display.update()
