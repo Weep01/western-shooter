@@ -1,3 +1,4 @@
+from pickle import TRUE
 import pygame
 from player import Player
 
@@ -61,8 +62,9 @@ class Game:
         else:
             self.player_1.fire = False
         if (self.press and self.pressed.get(pygame.K_SPACE)==False ):
-            self.player_1.fire = True
+            self.player_1.fire = TRUE
             self.press = False
+        
         # PLAYER 2 TIRE
         if self.pressed.get(pygame.K_KP0):
             self.press2 = True
