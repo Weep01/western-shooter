@@ -1,7 +1,7 @@
 from pickle import TRUE
 import pygame
 from player import Player
-
+import time
 class Game:
     def __init__(self):
         self.is_playing = False
@@ -140,6 +140,8 @@ class Game:
                 self.player_2.kill()
                 screen.blit(self.mort_background, (150, 100))
                 screen.blit(self.mort_blue,(350, 200))
+                pygame.display.update()
+                time.sleep(3)
                 main_menu_func(screen)
             if self.player_2.health <= 0:
                 from main_menu import main_menu_func
@@ -147,6 +149,8 @@ class Game:
                 self.player_2.kill()
                 screen.blit(self.mort_background, (150, 100))
                 screen.blit(self.mort_red,(350, 200))
+                pygame.display.update()
+                time.sleep(3)
                 main_menu_func(screen)
         
         clock.tick(60)
